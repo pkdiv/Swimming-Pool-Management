@@ -86,6 +86,7 @@ def memberDash():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
+    print(request)
     return redirect(url_for('login'))
 
 
@@ -118,13 +119,40 @@ def memberProf():
 
     return render_template('memberProf.html', data=data)
 
-@app.route('/admin')
-def admin():
+@app.route("/adminDash")
+def adminDash():
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM userDetails")
     userData = cur.fetchall()
     cur.close()
-    return render_template('admin.html', userData = userData)
+    return render_template('adminDash.html', userData = userData)
+
+
+@app.route('/admin', methods = ['POST', 'GET'])
+def admin():
+    if request.method == 'POST':
+        email = request.form['email']
+        password= request.form['password']
+        cur = mysql.connection.cursor()
+        result = cur.execute('SELECT * FROM admin WHERE email = %s', [email])
+
+        if result>0:
+            data = cur.fetchone()
+            stored_password = data['passwords']
+            if sha256_crypt.verify(password, stored_password):
+                session['email'] = email
+                return redirect(url_for("adminDash"))
+            else:
+                print('Wrong Password')
+            
+    return render_template('admin.html')
+
+
+@app.route('/adminLogout')
+def adminLogout():
+    session.pop('email', None)
+    return redirect(url_for('admin'))
+
 
 @app.errorhandler(404)
 def pageNotFound(e):

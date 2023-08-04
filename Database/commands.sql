@@ -11,3 +11,8 @@ INSERT INTO userDetails (name, city, state, pincode, gender, phone) VALUES (%s, 
 SELECT * FROM users;
 
 -- FOREIGN KEY (userID) REFERENCES users(userID)
+
+
+CREATE TABLE admin (adminID int NOT NULL AUTO_INCREMENT, email VARCHAR(200), passwords CHAR(77), PRIMARY KEY (adminID));
+
+INSERT INTO admin(email, passwords) VALUES( 'admin@test.com', '$5$rounds=535000$FlCrGe1gXPGjJTmZ$bw2C0nr2mX6uCgJBems6EG23siqYOfNO9mmoHu/oL6/' );
