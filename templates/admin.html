@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col">Zipcode</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Phone</th>
+    </tr>
+    <thead>
+        {% for data in userData %}
+        <tr>
+            <td>{{data['name']}}</td>
+            <td>{{data['city']}}</td>
+            <td>{{data['state']}}</td>
+            <td>{{data['zipcode']}}</td>
+            <td>{{data['gender']}}</td>
+            <td>{{data['phone']}}</td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock %}
