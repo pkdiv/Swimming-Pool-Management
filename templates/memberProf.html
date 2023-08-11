@@ -1,5 +1,9 @@
 {% extends 'layout.html' %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/login.css')}}">
+{% endblock %}
+
 {% block nav %}
 <li class="nav-item">
     <a class="nav-link" href="/logout">Logout</a>

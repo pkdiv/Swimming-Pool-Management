@@ -1,15 +1,69 @@
-{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/animate.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/lightcase.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/odometer.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/swiper.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/main.css')}}">
+
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+
+    <title>Drivon - Swimming School HTML Template</title>
 
 
-{% block nav %}
-<li class="nav-item">
-  <a class="nav-link" href="/login">Login</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="/regsiter">Register</a>
-</li>
-{% endblock %}
+</head>
 
-{% block body %}
-<h1>404 Not Found</h1>
-{% endblock %}
+<body>
+    <!-- ==========Preloader========== -->
+    <div class="preloader">
+        <div class="preloader-wrapper">
+            <img src="assets/css/ajax-loader.gif" alt="ajax-loader">
+        </div>
+    </div>
+    <!-- ==========Preloader========== -->
+
+    <!-- ===========Four Not Four Section=========== -->
+    <section class="four-0-four-section bg_img theme-overlay-deep" data-background="{{url_for('static', filename = 'assets/images/404-bg.png')}}">
+        <div class="container">
+            <div class="four-not-four-wrapper">
+                <div class="thumb">
+                    <img src="{{url_for('static', filename = 'assets/images/404.png')}}" alt="404">
+                </div>
+                <h4 class="title">We’re sorry, the page you have looked for does not exist in our database! Maybe go to
+                    our home page.</h4>
+                <a href="home" class="custom-button active white">go to home</a>
+            </div>
+        </div>
+    </section>
+    <!-- ===========Four Not Four Section=========== -->
+
+
+    <script src="{{url_for('static', filename = 'assets/js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/modernizr-3.6.0.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/plugins.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/isotope.pkgd.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/jquery.ripples-min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/lightcase.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/swiper.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/wow.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/countdown.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/odometer.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/viewport.jquery.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/nice-select.js')}}"></script>
+    <script src="{{url_for('static', filename = 'assets/js/main.js')}}"></script>
+</body>
+
+
+<!-- 404.html  22 Nov 2019 04:24:36 GMT -->
+</html>

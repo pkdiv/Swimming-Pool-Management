@@ -1,43 +1,85 @@
 {% extends 'layout.html' %}
 
+{% block nav %} 
 
-{% block stylesheets %}
-<link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/login.css')}}">
-{% endblock %}
-
-
-{% block nav %}
-<li class="nav-item">
-  <a class="nav-link" href="/regsiter">Register</a>
-</li>
-{% endblock %}
-
-{% block body %}
-    <!-- <div class="form-div">
-        <form action="" method="post">
-            <div class="form-outline mb-4">
-                <input type="email" id="email" class="form-control" name="email" aria-label="email" aria-describedby="addon-wrapping" value="{{request.form.email}}">
-              </div>
-              <div class="input-group flex-nowrap form-elements form-outline mb-4">
-                <span class="input-group-text" id="addon-wrapping">*</span>
-                <input type="password" class="form-control" name="password" aria-label="password" aria-describedby="addon-wrapping" value="{{request.form.password}}">
-              </div>
-            <div class="form-elements">
-                <button type="submit" class="btn btn-primary">Login</button>
+    <!-- ==========hero-area========== -->
+    <section class="hero-section">
+        <div class="hero-area bg_img" data-background="{{url_for('static', filename = 'assets/images/about/hero-bg.jpg')}}">
+            <div class="container">
+                <h1 class="title">sign in</h1>
             </div>
-        </form>
-    </div> -->
-
-    <div class="container">
-      <form class="form-signin myForm" method="post">
-        <div class="form-outline mb-4">
-          <input type="email" id="email" class="form-control" placeholder="Email address" name="email" aria-label="email" aria-describedby="addon-wrapping" value="{{request.form.email}}">
         </div>
-        <div class="form-outline mb-4">
-          <input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-label="password" aria-describedby="addon-wrapping" value="{{request.form.password}}">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">home</a>
+                </li>
+                <li>
+                    sign in
+                </li>
+            </ul>
         </div>
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-      </form>
-    </div>
+    </section>
+    <!-- ==========hero-area========== -->
 
-{% endblock %}
+
+    <!-- ==========privacy-section========== -->
+    <section class="account-section padding-top padding-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="sign-in-form-area">
+                        <h3 class="title">Welcome to Diveon ! Please login</h3>
+                        <form class="sign-in-form" method="post">
+                            <div class="form-group">
+                                <label for="email01">Phone Number or Email</label>
+                                <input type="text" name="email" id="email01" placeholder="Enter your phone number or email">
+                            </div>
+                            <div class="form-group">
+                                <label for="pass01">Password</label>
+                                <div class="pass-item">
+                                    <input type="password" name="password" id="pass01" placeholder="Please enter your password">
+                                    <span class="view-pass" id="view-pass-01">
+                                        <i class="flaticon-eye"></i>
+                                    </span>
+                                </div>
+                                <p class="mt-2 d-flex flex-wrap justify-content-between"><a href="register.html">New Member? Register Here</a><a href="#0">Forgot Password?</a></p>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="sign in">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="different-sign-in">
+                        <h3 class="title">Or Sign In with </h3>
+                        <ul>
+                            <li>
+                                <a class="facebook" href="#0"><i class="fab fa-facebook-f"></i> facebook</a>
+                            </li>
+                            <li>
+                                <a class="twitter" href="#0"><i class="fab fa-twitter"></i> twitter</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========privacy-section========== -->
+
+    <!-- ==========call-in-action-section========== -->
+    <section class="call-in-action padding-bottom padding-top bg-ash">
+        <div class="container">
+            <div class="call-in-area">
+                <h2 class="title">Have Any Questions About drivon</h2>
+                <p>Amet consectetur adipiscing elit, sed do eiutempor incididunt ut labore et dolore magna aliquaad
+                    minvenia quis nosta</p>
+                <a href="contact.html" class="custom-button active">contact us</a>
+            </div>
+        </div>
+    </section>
+    <!-- ==========call-in-action-section========== -->
+
+    {% endblock %}

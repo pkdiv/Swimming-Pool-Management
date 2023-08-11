@@ -16,3 +16,31 @@ SELECT * FROM users;
 CREATE TABLE admin (adminID int NOT NULL AUTO_INCREMENT, email VARCHAR(200), passwords CHAR(77), PRIMARY KEY (adminID));
 
 INSERT INTO admin(email, passwords) VALUES( 'admin@test.com', '$5$rounds=535000$FlCrGe1gXPGjJTmZ$bw2C0nr2mX6uCgJBems6EG23siqYOfNO9mmoHu/oL6/' );
+
+INSERT INTO userDetails (name, city, state, pincode, gender, phone) VALUES ('Testuser2', 'Testuser2', 'Testuser2', '123456', 'Male', '7894561230');
+
+
+UPDATE userDetails 
+SET userID = 2
+WHERE Name = 'Testuser2';
+
+
+
+
+
+
+Post Gres Commands:
+CREATE TABLE users (user_id SERIAL PRIMARY KEY, name VARCHAR(200), dob DATE, Phone CHAR(10), membership_start DATE, membership_end DATE, roleID SERIAL);
+
+CREATE TABLE login (user_id INT, email VARCHAR(200), password CHAR(77), FOREIGN KEY (user_id) REFERENCES users(user_id));
+
+CREATE TABLE permission (permission_id SERIAL PRIMARY KEY, Description VARCHAR(200));
+
+CREATE TABLE role (roleID SERIAL PRIMARY KEY, Description VARCHAR(200));
+
+CREATE TABLE role_perm (roleID INT REFERENCES role(roleID), permission_id INT REFERENCES permission(permission_id));
+
+
+GRANT ALL PRIVILEGES ON DATABASE swimming to flask;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO flask;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public to flask;

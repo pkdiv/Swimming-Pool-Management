@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/login.css')}}">
+{% endblock %}
+
+
+{% block nav %}
+<li class="nav-item">
+  <a class="nav-link" href="/regsiter">Register</a>
+</li>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+      <form class="form-signin myForm" method="post">
+        <div class="form-outline mb-4">
+          <input type="email" id="email" class="form-control" placeholder="Email address" name="email" aria-label="email" aria-describedby="addon-wrapping" value="{{request.form.email}}">
+        </div>
+        <div class="form-outline mb-4">
+          <input type="password" id="password" class="form-control" placeholder="Password" name="password" aria-label="password" aria-describedby="addon-wrapping" value="{{request.form.password}}">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+      </form>
+    </div>
+
+{% endblock %}

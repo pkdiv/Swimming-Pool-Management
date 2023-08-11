@@ -1,0 +1,8 @@
+.myTable {
+    min-width: 500px;
+    position: absolute;
+    text-align: center;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
