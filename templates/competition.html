@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block loginButtons %}
+<li>
+    <a href="/dashboard">Dashboard</a>
+</li>
+<li>
+    <a href="/logout">Logout</a>
+</li>
+{% endblock %}
+
+
+{% block body %}
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for data in compData %}
+                    <tr>
+                        <td>{{data['name']}}</td>
+                        <td>{{data['location']}}</td>
+                        <td>{{data['startdate']}}</td>
+                        <td>{{data['enddate']}}</td>
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div >
+    <button class="btn btn-primary mb-5" onclick="location.href='/addCompetition'" type="button">Start Competition</button>
+</div>
+{% endblock %}

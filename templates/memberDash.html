@@ -1,16 +1,45 @@
-{% extends 'layout.html' %}
+  {% extends 'layout.html' %}
 
 
-{% block loginButtons %}
-<li>
-  <a href="/memberProf">Profile</a>
-</li>
-<li>
-  <a href="/logout">Logout</a>
-</li>
-{% endblock %}
+  {% block loginButtons %}
+  <li>
+    <a href="/memberProf">Profile</a>
+  </li>
+  <li>
+    <a href="/logout">Logout</a>
+  </li>
+  {% endblock %}
 
 
-{% block body %}
-<h1>Registered</h1>
-{% endblock %}
+  {% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="card text-white bg-primary mb-3" style="width: 18rem;">
+          <div class="card-header">Subscription Plan</div>
+          <div class="card-body">
+            <p>Monthly</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+          <div class="card-header">Subscription End Date</div>
+          <div class="card-body">
+            <p>25 Mar 2024</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card text-white bg-success mb-3" style="width: 18rem;">
+          <div class="card-header">Classes Remaining</div>
+          <div class="card-body">
+            <p>15</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  {% endblock %}

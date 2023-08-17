@@ -1,0 +1,78 @@
+{% extends 'layout.html' %}
+
+
+
+{% block loginButtons %}
+<li>
+  <a href="/dashboard">Dashboard</a>
+</li>
+<li>
+  <a href="/logout">Logout</a>
+</li>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="card text-white bg-warning  mb-3" style="width: 18rem;">
+        <a href="/adminMemberTable" class="card-block stretched-link text-decoration-none" >
+        <div class="card-header"> Members </div>
+        <div class="card-body">
+          <p>{{data['members']}}</p>
+        </div>
+      </a>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+        <div class="card-header"><a href="/adminCoachesTable">Coaches</a></div>
+        <div class="card-body">
+          <p>{{data['coaches']}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-white bg-success mb-3" style="width: 18rem;">
+        <div class="card-header"><a href="/adminAthleteTable">Athelte</a></div>
+        <div class="card-body">
+          <p>{{data['athlete']}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <div class="card text-white bg-warning  mb-3" style="width: 18rem;">
+        <div class="card-header"> <a href="/competition">competition</a></div>
+        <div class="card-body">
+          <p>{{data['competition']}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+        <div class="card-header"><a href="/equipment">Equipment</a></div>
+        <div class="card-body">
+          <p>{{data['equipment']}}</p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-4">
+        <div class="card text-white bg-success mb-3" style="width: 18rem;">
+          <div class="card-header"><a href="/adminAthleteTable">Athelte</a></div>
+          <div class="card-body">
+            <p>5</p>
+          </div> -->
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

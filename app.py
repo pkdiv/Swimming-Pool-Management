@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL
 from passlib.hash import sha256_crypt
 from functools import wraps
 import psycopg2
+import psycopg2.extras
+
 
 
 app = Flask(__name__)
@@ -37,7 +39,7 @@ def is_logged_in(f):
 		if 'userID' in session:
 			return f(*args, **kwargs)
 		else:
-			flash('Nice try, Tricks don\'t work, bud!! Please Login :)', 'danger')
+			flash('Please Login', 'error')
 			return redirect(url_for('login'))
 	return wrap
 
@@ -60,12 +62,25 @@ def login():
         cur = conn.cursor()
         cur.execute('''SELECT * FROM login WHERE email = %s''', [email])
         data = cur.fetchone()
-        if data[0] > 0:
+        if data:
+            userID = data[0]
             stored_password = data[2]
+            session['userID'] = userID
             if sha256_crypt.verify(password, stored_password):
-                return redirect(url_for("memberDash"))
+                cur.execute('''SELECT roleid FROM users WHERE user_id = %s''', [userID])
+                roleID = cur.fetchone()[0]
+                cur.close()
+                if roleID == 1:
+                    return redirect(url_for("adminDash"))
+                else:
+                    return redirect(url_for("memberDash"))
             else:
-                print('Wrong Password')
+                cur.close()
+                flash('Wrong Password', 'error')
+                return redirect(url_for("login"))
+        else:
+             flash('Email not found. Please Register', 'error')
+             return redirect(url_for("login"))
             
     return render_template('login.html')
 
@@ -79,14 +94,20 @@ def register():
         email = request.form['email']
         password = request.form['password']
         cur = conn.cursor()
-        cur.execute('''INSERT INTO users (name) VALUES (%s) RETURNING user_id''', (name,))
-        result = cur.fetchone()
-        cur.execute('''INSERT INTO login (user_id, email, password) VALUES (%s,%s,%s) RETURNING user_id''', (result[0], email,sha256_crypt.encrypt(password)))
-        conn.commit()
-        cur.close()
-        userID = result[0]
-        session['userID'] = userID
-        return redirect(url_for("memberDash"))
+        cur.execute('''SELECT * FROM login WHERE email = %s''', [email])
+        result = cur.fetchall()
+        if result == []:
+            cur.execute('''INSERT INTO users (name,roleid) VALUES (%s,%s) RETURNING user_id''', (name,3))
+            result = cur.fetchone()
+            cur.execute('''INSERT INTO login (user_id, email, password) VALUES (%s,%s,%s) RETURNING user_id''', (result[0], email,sha256_crypt.encrypt(password)))
+            conn.commit()
+            cur.close()
+            userID = result[0]
+            session['userID'] = userID
+            return redirect(url_for("memberProf"))
+        else:
+             flash("Email already registered.")
+             return render_template('register.html')
 
     return render_template('register.html')
 
@@ -94,8 +115,6 @@ def register():
 @app.route('/memberDash')
 @is_logged_in
 def memberDash():
-    # if not session.get('userID'):
-    #     return redirect(url_for('login'))
     return render_template('memberDash.html')
 
 
@@ -106,73 +125,183 @@ def logout():
     return redirect(url_for('login'))
 
 
-# @app.route('/memberProf', methods = ['GET', 'POST'])
-# def memberProf():
-#     data = None
-#     if not session.get('email'):
-#         return redirect(url_for('login'))
-#     if request.method == 'POST':
-#         name = request.form['name']
-#         city = request.form['city']
-#         state = request.form['state']
-#         zipcode = request.form['zipcode']
-#         gender = request.form['gender']
-#         phone = request.form['phone']
-#         cur = mysql.connection.cursor()
-#         cur.execute('INSERT INTO userDetails (name, city, state, pincode, gender, phone) VALUES (%s, %s, %s, %s, %s, %s);', (name, city, state, zipcode, gender, phone))
-#         mysql.connection.commit()
-#         cur.close()
-
-#     if request.method == 'GET':
-#         cur = mysql.connection.cursor()
-#         email = session.get('email')
-#         print(email)
-#         cur.execute("SELECT userID FROM users WHERE email = %s;", [email])
-#         data = cur.fetchone()
-#         print(data)
-#         cur.close()
-#         print(data)
-        
-
-#     return render_template('memberProf.html', data=data)
-
-# @app.route("/adminDash")
-# def adminDash():
-#     cur = mysql.connection.cursor()
-#     cur.execute("SELECT * FROM userDetails")
-#     userData = cur.fetchall()
-#     cur.close()
-#     return render_template('adminDash.html', userData = userData)
-
-
-# @app.route('/admin', methods = ['POST', 'GET'])
-# def admin():
-#     if request.method == 'POST':
-#         email = request.form['email']
-#         password= request.form['password']
-#         cur = mysql.connection.cursor()
-#         result = cur.execute('SELECT * FROM admin WHERE email = %s', [email])
-#         if result>0:
-#             data = cur.fetchone()
-#             stored_password = data['passwords']
-#             if sha256_crypt.verify(password, stored_password):
-#                 session['email'] = email
-#                 return redirect(url_for("adminDash"))
-#             else:
-#                 print('Wrong Password')
+@app.route('/memberProf', methods = ['GET', 'POST'])
+@is_logged_in
+def memberProf():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
+        phone = request.form['phone']
+        dob = request.form['dob']
+        address = request.form['address']
+        address2 = request.form['address2']
+        state = request.form['state']
+        country = request.form['country']
+        pincode = request.form['pincode']
+        cur = conn.cursor()
+        cur.execute('''SELECT * FROM users WHERE user_id = %s''', (session['userID']))
+        if len(cur.fetchone()) != 0:
+            cur.execute(''' UPDATE users
+                        SET name = %s,
+                        phone = %s,
+                        address = %s,
+                        address2 = %s,
+                        dob = %s,
+                        state = %s,
+                        country = %s,
+                        pincode = %s
+                        WHERE user_id = %s''',
+                        (name,phone,address,address2,dob,state,country,pincode,session['userID']))
             
-#     return render_template('admin.html')
+            cur.execute(''' UPDATE login
+                        SET email = %s,
+                    password = %s
+                    WHERE user_id = %s''',
+                    (email, sha256_crypt.encrypt(password), session['userID']))
+        else:
+            result = cur.execute('''INSERT INTO users (name,phone,address,address2,dob,state,country,pincode,roleid) VALUES (%s,%s) RETURNING user_id''', (name,phone,address,address2,dob,state,country,pincode,3))
+            cur.execute('''INSERT INTO login (user_id, email, password) VALUES (%s,%s,%s) RETURNING user_id''', (result[0], email,sha256_crypt.encrypt(password)))
+
+        conn.commit()
+        cur.close()
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute('''SELECT * FROM users WHERE user_id = %s''', [session['userID']])
+    data = cur.fetchone()
+    cur.close()
+    return render_template('memberProf.html', data=data)
+
+@app.route("/dashboard")
+def dashboard():
+    cur = conn.cursor()
+    cur.execute('''SELECT roleid FROM users WHERE user_id = %s''', [session['userID']])
+    roleID = cur.fetchone()[0]
+    cur.close()
+    print(session['userID'])
+    print(roleID)
+
+    if roleID == 3:
+         return redirect(url_for('memberDash'))
+    elif roleID == 1:
+        return redirect(url_for('adminDash'))
+    else:
+        return render_template('index.html')
+
+@app.route("/adminDash", methods = ['GET', 'POST'])
+def adminDash():
+    data = {}
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE roleid = 3 ")
+    data['members'] = len(cur.fetchall())
+    cur.execute("SELECT * FROM users WHERE roleid = 2 ")
+    data['coaches'] = len(cur.fetchall())
+    cur.execute("SELECT * FROM users WHERE roleid = 4 ")
+    data['athlete'] = len(cur.fetchall())
+    cur.execute("SELECT * FROM competition")
+    data['competition'] = len(cur.fetchall())
+    cur.execute("SELECT * FROM equipment")
+    data['equipment'] = len(cur.fetchall())
+    cur.close()
+    return render_template('adminDash.html', data=data)
+
+@app.route("/adminMemberTable", methods = ['GET', 'POST'])
+def adminMemberTable():
+    if request.method == 'POST':
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        print(request.form['user_id'])
+        cur.execute('''SELECT * FROM users WHERE user_id = %s''', [request.form['user_id']])
+        data = cur.fetchone()
+        cur.execute('''SELECT * FROM login WHERE user_id = %s''', [request.form['user_id']])
+        loginData = cur.fetchone()
+        data['email'] = loginData['email']
+        cur.close()
+        return render_template('memberProf.html', data=data)
+    else:
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        cur.execute("SELECT * FROM users WHERE roleid = 3")
+        userData = cur.fetchall()
+        cur.close()
+        return render_template('adminMemberTable2.html', userData = userData)
+
+@app.route("/adminCoachesTable")
+def adminCoachesTable():
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute("SELECT * FROM users WHERE roleid = 2")
+    userData = cur.fetchall()
+    cur.close()
+    return render_template('adminCoachesTable2.html', userData = userData)
+
+@app.route("/adminAthleteTable", methods = ['GET', 'POST'])
+def adminAthleteTable():
+    if request.method == 'POST':
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        print(request.form['user_id'])
+        cur.execute('''SELECT * FROM users WHERE user_id = %s''', [request.form['user_id']])
+        data = cur.fetchone()
+        cur.execute('''SELECT * FROM login WHERE user_id = %s''', [request.form['user_id']])
+        loginData = cur.fetchone()
+        data['email'] = loginData['email']
+        cur.close()
+        return render_template('memberProf.html', data=data)
+    else:
+        cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        cur.execute("SELECT * FROM users WHERE roleid = 4")
+        userData = cur.fetchall()
+        cur.close()
+        return render_template('adminAthleteTable.html', userData = userData)
+
+@app.route('/competition')
+def competition():
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute("SELECT * FROM competition")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('competition.html', compData = data)
+
+@app.route('/equipment')
+def equipment():
+    cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute("SELECT * FROM equipment")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('equipment.html', data = data)
 
 
-# @app.route('/adminLogout')
-# def adminLogout():
-#     session.pop('email', None)
-#     return redirect(url_for('admin'))
+@app.route('/addCompetition', methods = ['GET', 'POST'])
+def addCompetition():
+    if request.method == "POST":
+        name = request.form['compName']
+        location = request.form['compLocation']
+        startDate = request.form['startDate']
+        endDate = request.form['endDate']
+        cur = conn.cursor()
+        cur.execute("INSERT INTO competition(name,location,startdate,enddate) VALUES(%s,%s,%s,%s)", (name, location, startDate, endDate))
+        conn.commit()
+        cur.close()
+    return render_template('/addCompetition.html')
 
+
+@app.route('/addEquipment', methods = ['GET', 'POST'])
+def addEquipment():
+    # if request.method == "POST":
+    #     name = request.form['compName']
+    #     location = request.form['compLocation']
+    #     startDate = request.form['startDate']
+    #     endDate = request.form['endDate']
+    #     cur = conn.cursor()
+    #     cur.execute("INSERT INTO competition(name,location,startdate,enddate) VALUES(%s,%s,%s,%s)", (name, location, startDate, endDate))
+    #     conn.commit()
+    #     cur.close()
+    return render_template('/addEquipment.html')
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/temp')
+def temp():
+    return render_template('temp.html')
+
 
 
 @app.errorhandler(404)

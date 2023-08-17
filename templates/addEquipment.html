@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="sign-in-form-area">
+        <form class="sign-in-form" method="post">
+            <div class="form-group">
+                <label for="equipName">Equipment Name</label>
+                <input class="form-control" type="text" name="equipName" id="equipName" placeholder="Equipment Name">
+            </div>
+            <div class="form-group">
+                <label for="equipLocation">Location</label>
+                <input class="form-control" type="text" name="equipLocation" id="equipLocation" placeholder="Equipment Location">
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input class="form-control" type="number" name="quantity" id="quantity" placeholder="Quantity">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
