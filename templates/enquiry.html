@@ -1,0 +1,118 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Enquiry</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Maninder Anupama</td>
+                            <td>1971-08-12</td>
+                            <td>Karnataka</td>
+                            <td>India</td>
+                            <td>560061</td>
+                            <td>9876543201</td>
+                            <td>
+                                <form method="POST">
+                                    <input hidden type="text" name=user_id >
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Abha Murali</td>
+                            <td>1971-08-12</td>
+                            <td>Karnataka</td>
+                            <td>India</td>
+                            <td>560061</td>
+                            <td>9876543201</td>
+                            <td>
+                                <form method="POST">
+                                    <input hidden type="text" name=user_id >
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Shekhar Dhaval</td>
+                            <td>1971-08-12</td>
+                            <td>Karnataka</td>
+                            <td>India</td>
+                            <td>560061</td>
+                            <td>9876543201</td>
+                            <td>
+                                <form method="POST">
+                                    <input hidden type="text" name=user_id >
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    
+                        <tr>
+                            <td>Samir Ratna</td>
+                            <td>1971-08-12</td>
+                            <td>Karnataka</td>
+                            <td>India</td>
+                            <td>560061</td>
+                            <td>9876543201</td>
+                            <td>
+                                <form method="POST">
+                                    <input hidden type="text" name=user_id >
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/addNewMember'" type="button">New
+                Enquiry</button>
+        </div>
+    </div>
+</div>
+{% endblock %}

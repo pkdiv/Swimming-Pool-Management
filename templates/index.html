@@ -90,7 +90,8 @@
                 <div class="header-wrapper">
                     <div class="logo">
                         <a href="#0">
-                            <img src="assets/images/logo/logo.png" alt="logo">
+                            <!-- <img src="assets/images/logo/logo.png" alt="logo"> -->
+                            <img src="{{url_for('static', filename = 'assets/images/logo/logo.png')}}" alt="logo">
                         </a>
                     </div>
                     <ul class="menu ml-auto">
@@ -122,7 +123,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#0">Shop</a>
                             <ul class="submenu">
                                 <li>
@@ -138,7 +139,7 @@
                                     <a href="checkout.html">Checkout</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#0">Pages</a>
                             <ul class="submenu">
@@ -184,7 +185,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#0">Blog</a>
                             <ul class="submenu">
                                 <li>
@@ -197,7 +198,7 @@
                                     <a href="blog-details.html">blog details</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#0">Account</a>
                             <ul class="submenu">
@@ -224,11 +225,11 @@
                                 <i class="flaticon-magnifying-glass"></i>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a id="cart-button" href="#0">
                                 <i class="flaticon-shopping-cart"></i>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -257,7 +258,8 @@
                 <h4 class="title">Shopping cart</h4>
                 <div class="single-product-item">
                     <div class="thumb">
-                        <img src="assets/images/shop/shop01.png" alt="shop">
+                        
+                        <img src="{{url_for('static', filename = 'assets/images/shop/shop01.png')}}" alt="shop">
                     </div>
                     <div class="content">
                         <h4 class="title">Swimming Shoes</h4>
@@ -267,7 +269,7 @@
                 </div>
                 <div class="single-product-item">
                     <div class="thumb">
-                        <img src="assets/images/shop/shop02.png" alt="shop">
+                        <img src="{{url_for('static', filename = 'assets/images/shop/shop02.png')}}" alt="shop">
                     </div>
                     <div class="content">
                         <h4 class="title">Water Glass</h4>
@@ -277,7 +279,7 @@
                 </div>
                 <div class="single-product-item">
                     <div class="thumb">
-                        <img src="assets/images/shop/shop03.png" alt="shop">
+                        <img src="{{url_for('static', filename = 'assets/images/shop/shop03.png')}}" alt="shop">
                     </div>
                     <div class="content">
                         <h4 class="title">Support Suit</h4>
@@ -315,7 +317,8 @@
     <!-- ==========header-section========== -->
 
     <!-- ==========banner-section========== -->
-    <section class="banner-section bg_img" data-background="assets/images/banner/banner-bg02.jpg">
+    <!-- <section class="banner-section bg_img" data-background="assets/images/banner/banner-bg02.jpg"> -->
+    <section class="banner-section bg_img" data-background="{{url_for('static', filename = 'assets/images/banner/banner-bg02.jpg')}}">
         <div class="container">
             <div class="banner-content mx-auto text-center">
                 <span class="cate wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">Swim lessons for adults and children</span>
@@ -337,13 +340,16 @@
                 <div class="col-lg-6">
                     <div class="welcome-thumb">
                         <div class="thumb1">
-                            <img src="assets/images/about/about04.jpg" alt="about">
+                            <!-- <img src="assets/images/about/about04.jpg" alt="about"> -->
+                            <img src="{{url_for('static', filename = 'assets/images/about/about04.jpg')}}" alt="about">
                         </div>
                         <div class="thumb2">
-                            <img src="assets/images/about/about05.jpg" alt="about">
+                            <!-- <img src="assets/images/about/about05.jpg" alt="about"> -->
+                            <img src="{{url_for('static', filename = 'assets/images/about/about05.jpg')}}" alt="about">
                         </div>
                         <div class="thumb3">
-                            <img src="assets/images/about/about06.jpg" alt="about">
+                            <!-- <img src="assets/images/about/about06.jpg" alt="about"> -->
+                            <img src="{{url_for('static', filename = 'assets/images/about/about06.jpg')}}" alt="about">
                         </div>
                     </div>
                 </div>
@@ -407,14 +413,14 @@
                 <div class="col-lg-6">
                     <div class="about-us-thumb">
                         <div class="thumb1 wow slideInUp">
-                            <img src="assets/images/about/about01.jpg" alt="about">
+                            <img src="{{url_for('static', filename = 'assets/images/about/about01.jpg')}}" alt="about">
                         </div>
-                        <div class="thumb2 wow bounceInRight" data-wow-delay=".5s">
-                            <img src="assets/images/about/about02.jpg" alt="about">
+                        <!-- <div class="thumb2 wow bounceInRight" data-wow-delay=".5s">
+                            <img src="{{url_for('static', filename = 'assets/images/about/about02.jpg')}}" alt="about">
                         </div>
                         <div class="thumb3 wow zoomIn" data-wow-delay=".5s">
-                            <img src="assets/images/about/about03.jpg" alt="about">
-                        </div>
+                            <img src="{{url_for('static', filename = 'assets/images/about/about03.jpg')}}" alt="about">
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -427,7 +433,7 @@
         <div class="container-fluid p-0">
             <div class="row m-0">
                 <div class="col-lg-6 padding-top padding-bottom pb-lg-0 mb--30-max-sm px-0 bg_img"
-                    data-background="assets/images/overview/overview-bg03.jpg">
+                    data-background="{{url_for('static', filename = 'assets/images/overview/overview-bg03.jpg')}}">
                     <div class="overview-counter-section h-100">
                         <div class="overview-counter-wrapper h-100">
                             <div class="counter-item">
@@ -446,7 +452,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 px-0">
-                    <div class="overview-two-content theme-overlay-deep w-100 h-100 padding-top padding-bottom bg_img" data-background="assets/images/overview/overview-bg02.jpg">
+                    <div class="overview-two-content theme-overlay-deep w-100 h-100 padding-top padding-bottom bg_img" data-background="{{url_for('static', filename = 'assets/images/overview/overview-bg02.jpg')}}">
                         <div class="content">
                             <div class="section-header mb-low light left-style">
                                 <h2 class="title">why choose us?</h2>
@@ -494,7 +500,8 @@
                     <div class="course-item">
                         <div class="c-thumb course-thumb">
                             <a href="course-details.html">
-                                <img src="assets/images/course/course01.jpg" alt="course">
+                                
+                                <img src="{{url_for('static', filename = 'assets/images/course/course01.jpg')}}" alt="course">
                             </a>
                             <div class="price-tag">
                                 <h3 class="price">$45</h3>
@@ -512,7 +519,7 @@
                     <div class="course-item">
                         <div class="c-thumb course-thumb">
                             <a href="course-details.html">
-                                <img src="assets/images/course/course02.jpg" alt="course">
+                                <img src="{{url_for('static', filename = 'assets/images/course/course02.jpg')}}" alt="course">
                             </a>
                             <div class="price-tag">
                                 <h3 class="price">$60</h3>
@@ -530,7 +537,7 @@
                     <div class="course-item">
                         <div class="c-thumb course-thumb">
                             <a href="course-details.html">
-                                <img src="assets/images/course/course03.jpg" alt="course">
+                                <img src="{{url_for('static', filename = 'assets/images/course/course03.jpg')}}" alt="course">
                             </a>
                             <div class="price-tag">
                                 <h3 class="price">$89</h3>
@@ -554,7 +561,7 @@
         <div class="container-fluid p-0">
             <div class="row m-0">
                 <div class="col-lg-6 p-0">
-                    <div class="w-100 h-100 overview-video theme-overlay bg_img" data-background="assets/images/overview/overview-bg01.jpg">
+                    <div class="w-100 h-100 overview-video theme-overlay bg_img" data-background="{{url_for('static', filename = 'assets/images/overview/overview-bg01.jpg')}}">
                         <a href="https://www.youtube.com/embed/GT6-H4BRyqQ" class="video"
                             data-rel="lightcase:myCollection">
                             <i class="flaticon-play-button"></i>
@@ -628,7 +635,8 @@
                     <div class="instructor-item">
                         <div class="c-thumb">
                             <a href="instructor-profile.html">
-                                <img src="assets/images/instructor/instructor01.jpg" alt="instructor">
+                                <!-- <img src="assets/images/instructor/instructor01.jpg" alt="instructor"> -->
+                                <img src="{{url_for('static', filename = 'assets/images/instructor/instructor01.jpg')}}" alt="instructor">
                             </a>
                         </div>
                         <div class="instructor-content">
@@ -643,7 +651,7 @@
                     <div class="instructor-item">
                         <div class="c-thumb">
                             <a href="instructor-profile.html">
-                                <img src="assets/images/instructor/instructor02.jpg" alt="instructor">
+                                <img src="{{url_for('static', filename = 'assets/images/instructor/instructor02.jpg')}}" alt="instructor">
                             </a>
                         </div>
                         <div class="instructor-content">
@@ -658,7 +666,7 @@
                     <div class="instructor-item">
                         <div class="c-thumb">
                             <a href="instructor-profile.html">
-                                <img src="assets/images/instructor/instructor03.jpg" alt="instructor">
+                                <img src="{{url_for('static', filename = 'assets/images/instructor/instructor03.jpg')}}" alt="instructor">
                             </a>
                         </div>
                         <div class="instructor-content">
@@ -706,7 +714,7 @@
                             <td data-input="Instructor">
                                 <div class="instructor">
                                     <div class="thumb">
-                                        <a href="#0"><img src="assets/images/instructor/instructor05.png"
+                                        <a href="#0"><img src="{{url_for('static', filename = 'assets/images/instructor/instructor05.jpg')}}" alt="instructor"
                                                 alt="schedule"></a>
                                     </div>
                                     <div class="content">
@@ -727,8 +735,7 @@
                             <td data-input="Instructor">
                                 <div class="instructor">
                                     <div class="thumb">
-                                        <a href="#0"><img src="assets/images/instructor/instructor02.png"
-                                                alt="schedule"></a>
+                                        <a href="#0"><img src="{{url_for('static', filename = 'assets/images/instructor/instructor02.jpg')}}" alt="instructor"></a>
                                     </div>
                                     <div class="content">
                                         <a href="#0">David James</a>
@@ -748,8 +755,7 @@
                             <td data-input="Instructor">
                                 <div class="instructor">
                                     <div class="thumb">
-                                        <a href="#0"><img src="assets/images/instructor/instructor03.png"
-                                                alt="schedule"></a>
+                                        <a href="#0"><img src="{{url_for('static', filename = 'assets/images/instructor/instructor03.jpg')}}" alt="instructor"></a>
                                     </div>
                                     <div class="content">
                                         <a href="#0">monica Wagse</a>
@@ -769,8 +775,7 @@
                             <td data-input="Instructor">
                                 <div class="instructor">
                                     <div class="thumb">
-                                        <a href="#0"><img src="assets/images/instructor/instructor01.png"
-                                                alt="schedule"></a>
+                                        <a href="#0"><img src="{{url_for('static', filename = 'assets/images/instructor/instructor01.jpg')}}" alt="instructor"></a>
                                     </div>
                                     <div class="content">
                                         <a href="#0">Natalli Moe</a>
@@ -807,7 +812,8 @@
                     <div class="client-item">
                         <div class="client-thumb">
                             <div class="thumb">
-                                <img src="assets/images/client/client01.jpg" alt="client">
+                                
+                                <img src="{{url_for('static', filename = 'assets/images/client/client01.jpg')}}" alt="client">
                             </div>
                         </div>
                         <div class="client-content">
@@ -821,7 +827,7 @@
                     <div class="client-item">
                         <div class="client-thumb">
                             <div class="thumb">
-                                <img src="assets/images/client/client02.jpg" alt="client">
+                                <img src="{{url_for('static', filename = 'assets/images/client/client02.jpg')}}" alt="client">
                             </div>
                         </div>
                         <div class="client-content">
@@ -835,7 +841,7 @@
                     <div class="client-item">
                         <div class="client-thumb">
                             <div class="thumb">
-                                <img src="assets/images/client/client03.jpg" alt="client">
+                                <img src="{{url_for('static', filename = 'assets/images/client/client03.jpg')}}" alt="client">
                             </div>
                         </div>
                         <div class="client-content">
@@ -862,7 +868,8 @@
                 <div class="post-item">
                     <div class="post-thumb">
                         <a href="blog-grid.html">
-                            <img src="assets/images/blog/blog01.jpg" alt="blog">
+                            <!-- <img src="assets/images/blog/blog01.jpg" alt="blog"> -->
+                            <img src="{{url_for('static', filename = 'assets/images/blog/blog01.jpg')}}" alt="blog">
                         </a>
                     </div>
                     <div class="post-content">
@@ -882,7 +889,7 @@
                             <div class="meta-author">
                                 <div class="c-thumb">
                                     <a href="#0">
-                                        <img src="assets/images/blog/blog01.png" alt="blog">
+                                        <img src="{{url_for('static', filename = 'assets/images/blog/blog01.jpg')}}" alt="blog">
                                     </a>
                                 </div>
                                 <div class="c-content">
@@ -895,7 +902,7 @@
                 <div class="post-item">
                     <div class="post-thumb">
                         <a href="blog-grid.html">
-                            <img src="assets/images/blog/blog02.jpg" alt="blog">
+                            <img src="{{url_for('static', filename = 'assets/images/blog/blog02.jpg')}}" alt="blog">
                         </a>
                     </div>
                     <div class="post-content">
@@ -915,7 +922,7 @@
                             <div class="meta-author">
                                 <div class="c-thumb">
                                     <a href="#0">
-                                        <img src="assets/images/blog/blog02.png" alt="blog">
+                                        <img src="{{url_for('static', filename = 'assets/images/blog/blog02.jpg')}}" alt="blog">
                                     </a>
                                 </div>
                                 <div class="c-content">
@@ -928,7 +935,7 @@
                 <div class="post-item">
                     <div class="post-thumb">
                         <a href="blog-grid.html">
-                            <img src="assets/images/blog/blog03.jpg" alt="blog">
+                            <img src="{{url_for('static', filename = 'assets/images/blog/blog03.jpg')}}" alt="blog">
                         </a>
                     </div>
                     <div class="post-content">
@@ -948,7 +955,7 @@
                             <div class="meta-author">
                                 <div class="c-thumb">
                                     <a href="#0">
-                                        <img src="assets/images/blog/blog01.png" alt="blog">
+                                        <img src="{{url_for('static', filename = 'assets/images/blog/blog01.jpg')}}" alt="blog">
                                     </a>
                                 </div>
                                 <div class="c-content">
@@ -961,30 +968,20 @@
             </div>
         </div>
     </section>
-    <!-- ==========blog-section========== -->
 
-    <!-- ==========blog-section========== -->
-    <section class="call-in-action padding-bottom padding-top">
-        <div class="container">
-            <div class="call-in-area">
-                <h2 class="title">Have Any Questions About drivon</h2>
-                <p>Amet consectetur adipiscing elit, sed do eiutempor incididunt ut labore et dolore magna aliquaad minvenia quis nosta</p>
-                <a href="contact.html" class="custom-button active">contact us</a>
-            </div>
-        </div>
-    </section>
-    <!-- ==========blog-section========== -->
 
     <!-- ==========footer-section========== -->
     <footer>
-        <div class="footer-top padding-top padding-bottom theme-overlay bg_img" data-background="assets/images/footer.jpg">
+        <!-- <div class="footer-top padding-top padding-bottom theme-overlay bg_img" data-background="assets/images/footer.jpg"> -->
+        <div class="footer-top padding-top padding-bottom theme-overlay bg_img" data-background="{{url_for('static', filename = 'assets/images/footer.jpg')}}">
             <div class="container">
                 <div class="row mb-40-none">
                     <div class="col-md-4 col-sm-8">
                         <div class="footer-widget footer-about">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="assets/images/logo/footer-logo.png" alt="logo">
+                                    <!-- <img src="assets/images/logo/footer-logo.png" alt="logo"> -->
+                                    <img src="{{url_for('static', filename = 'assets/images/logo/footer-logo.png')}}" alt="logo">
                                 </a>
                             </div>
                             <p>Lorem ipsum dolor sit amet, porta feugiat odio nam ut magnis tempor. Vitae quis nisl viverra adipiscing in, integer penatibus elit luctus </p>

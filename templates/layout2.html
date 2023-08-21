@@ -12,7 +12,6 @@
     <title>Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    
     <link rel="stylesheet" href="{{url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css')}}">
     <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
     <link
@@ -20,6 +19,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/sb-admin-2.min.css')}}">
 
 </head>
@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="adminDash">
+                <a class="nav-link" href="memberDash">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -56,47 +56,16 @@
             <!-- Heading -->
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Users</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="heading" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="adminMemberTable">Members</a>
-                        <a class="collapse-item" href="adminCoachesTable">Coaches</a>
-                        <a class="collapse-item" href="adminAthleteTable">Swimmers</a>
-                        <a class="collapse-item" href="enquiry">Enquiry</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-location-arrow"></i>
-                    <span>Branch</span>
-                </a>
-                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="branch1Dash">Branch 1</a>
-                        <a class="collapse-item" href="branch2Dash">Branch 2</a>
-                        <a class="collapse-item" href="branch3Dash">Branch 3</a>
-                    </div>
-                </div>
-            </li>
+            
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="equipment">
+                <a class="nav-link" href="payment">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Resources</span></a>
+                    <span>Payments</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="competition">
+                <a class="nav-link" href="yourCompetition">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Competition</span></a>
             </li>
@@ -193,6 +162,17 @@
                                         $290.29 has been deposited into your account!
                                     </div>
                                 </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div>
                         </li>
@@ -237,13 +217,25 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <!-- <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="..."> -->
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
                                         <div class="text-truncate">Last month's report looks great, I am very happy with
                                             the progress so far, keep up the good work!</div>
                                         <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
+                                            alt="...">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
+                                            told me that people say this to all dogs, even if they aren't good...</div>
+                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -256,7 +248,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Admin </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Test User </span>
                                 <img class="rounded-circle img-profile" src="{{url_for('static', filename = 'assets/img/undraw_profile.svg')}}" alt="...">
                             </a>
                             <!-- Dropdown - User Information -->

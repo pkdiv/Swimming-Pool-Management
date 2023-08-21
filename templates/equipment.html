@@ -12,34 +12,46 @@
 
 {% block body %}
 
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Location</th>
-                    </tr>
-                </thead>
+<div class="container-fluid">
 
-                <tbody>
-                    {% for data in userData %}
-                    <tr>
-                        <td>{{data['name']}}</td>
-                        <td>{{data['quantity']}}</td>
-                        <td>{{data['location']}}</td>
-                    </tr>
-                    {% endfor %}
-
-                </tbody>
-            </table>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Resources</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Location</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        {% for data in userData %}
+                        <tr>
+                            <td>{{data['name']}}</td>
+                            <td>{{data['quantity']}}</td>
+                            <td>{{data['location']}}</td>
+                        </tr>
+                        {% endfor %}
+    
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 
-<div>
-    <button class="btn btn-primary mb-5" onclick="location.href='/addEquipment'" type="button">Add Equipment</button>
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/addEquipment'" type="button">Add Equipment</button>
+        </div>
+            
+    </div>
 </div>
 {% endblock %}

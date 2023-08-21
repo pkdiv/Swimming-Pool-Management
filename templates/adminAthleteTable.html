@@ -12,48 +12,92 @@
 
 {% block body %}
 
-<div class="card shadow mb-4">
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Date of Birth</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Pincode</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
+<!-- Begin Page Content -->
+<div class="container-fluid">
 
-                <tbody>
-                    {% for data in userData %}
+    <!-- Page Heading -->
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Swimmers</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date of Birth</th>
+                            <th scope="col">State</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Pincode</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
                     <tr>
-                        <td>{{data['name']}}</td>
-                        <td>{{data['dob']}}</td>
-                        <td>{{data['state']}}</td>
-                        <td>{{data['country']}}</td>
-                        <td>{{data['pincode']}}</td>
-                        <td>{{data['phone']}}</td>
+                        <td><a href="/swimmerProf">Raman Rishi</a></td>
+                        <td>1971-08-12</td>
+                        <td>Karnataka</td>
+                        <td>India</td>
+                        <td>560061</td>
+                        <td>9876543201</td>
                         <td>
-                            <form method="POST" >
-                                <input hidden type="text" name=user_id value={{data["user_id"]}}>
+                            <form method="POST">
+                                <input hidden type="text" name=user_id >
                                 <div class="form-group">
-                                    <input type="submit" value="Edit">
+                                    <input class="btn btn-primary" type="submit" value="Edit">
                                 </div>
-                            </form> 
+                            </form>
                         </td>
                     </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    <tr>
+                        <td><a href="/swimmerProf">Padmini Bhavna</a></td>
+                        <td>1971-08-12</td>
+                        <td>Karnataka</td>
+                        <td>India</td>
+                        <td>560061</td>
+                        <td>9876543201</td>
+                        <td>
+                            <form method="POST">
+                                <input hidden type="text" name=user_id >
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" value="Edit">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="/swimmerProf">Ajay Kumar</a></td>
+                        <td>1971-08-12</td>
+                        <td>Karnataka</td>
+                        <td>India</td>
+                        <td>560061</td>
+                        <td>9876543201</td>
+                        <td>
+                            <form method="POST">
+                                <input hidden type="text" name=user_id >
+                                <div class="form-group">
+                                    <input class="btn btn-primary" type="submit" value="Edit">
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/memberProf'" type="button">Add New Athlete</button>
         </div>
     </div>
 </div>
 
-<div >
-    <button class="btn btn-primary mb-5" onclick="location.href='/memberProf'" type="button">Add New Athlete</button>
-</div>
 {% endblock %}

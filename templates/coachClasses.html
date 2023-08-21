@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Classes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Member Count</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Branch 1</td>
+                        <td>12-09-2023</td>
+                        <td>5:00 pm</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+
+                        <td>Branch 1</td>
+                        <td>13-09-2023</td>
+                        <td>5:00 pm</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Branch 2</td>
+                        <td>10-09-2023</td>
+                        <td>4:00 pm</td>
+                        <td>12</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/addClass'" type="button">Add Class</button>
+        </div>
+            
+    </div>
+</div>
+
+
+<!-- /.container-fluid -->
+
+{% endblock %}

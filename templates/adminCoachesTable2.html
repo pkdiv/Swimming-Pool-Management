@@ -1,11 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Coaches</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -26,24 +25,74 @@
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    {% for data in userData %}
                     <tr>
-                        <td>{{data['name']}}</td>
-                        <td>{{data['dob']}}</td>
-                        <td>{{data['state']}}</td>
-                        <td>{{data['country']}}</td>
-                        <td>{{data['pincode']}}</td>
-                        <td>{{data['phone']}}</td>
+                        <td><a href="/coachStudentsTable">Dev Kumar</a></td>
+                        <td>1971-08-12</td>
+                        <td>Karnataka</td>
+                        <td>India</td>
+                        <td>560061</td>
+                        <td>9876543201</td>
                         <td>
                             <form method="POST">
-                                <input hidden type="text" name=user_id value={{data["user_id"]}}>
+                                <input hidden type="text" name=user_id >
                                 <div class="form-group">
-                                    <input type="submit" value="Edit">
+                                    <input class="btn btn-primary" type="submit" value="Edit">
                                 </div>
                             </form>
                         </td>
                     </tr>
-                    {% endfor %}
+                    <tr>
+                        <tr>
+                            <td><a href="/coachStudentsTable">Raman Raj</a></td>
+                            <td>1971-08-12</td>
+                            <td>Karnataka</td>
+                            <td>India</td>
+                            <td>560061</td>
+                            <td>9876543201</td>
+                            <td>
+                                <form method="POST">
+                                    <input hidden type="text" name=user_id >
+                                    <div class="form-group">
+                                        <input class="btn btn-primary" type="submit" value="Edit">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <tr>
+                                <td><a href="/coachStudentsTable">Prabhat Anantha</a></td>
+                                <td>1971-08-12</td>
+                                <td>Karnataka</td>
+                                <td>India</td>
+                                <td>560061</td>
+                                <td>9876543201</td>
+                                <td>
+                                    <form method="POST">
+                                        <input hidden type="text" name=user_id >
+                                        <div class="form-group">
+                                            <input class="btn btn-primary" type="submit" value="Edit">
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <tr>
+                                    <td><a href="/coachStudentsTable">Ajay Anit</a></td>
+                                    <td>1971-08-12</td>
+                                    <td>Karnataka</td>
+                                    <td>India</td>
+                                    <td>560061</td>
+                                    <td>9876543201</td>
+                                    <td>
+                                        <form method="POST">
+                                            <input hidden type="text" name=user_id >
+                                            <div class="form-group">
+                                                <input class="btn btn-primary" type="submit" value="Edit">
+                                            </div>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
                     </tbody>
                 </table>
             </div>
@@ -51,9 +100,72 @@
     </div>
 
 </div>
-<div >
-    <button class="btn btn-primary mb-5" onclick="location.href='/memberProf'" type="button">Add New Coach</button>
+
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/memberProf'" type="button">Add New Coach</button>
+        </div>
+            
+    </div>
 </div>
-<!-- /.container-fluid -->
+
+
+<div class="container-fluid">
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Classes</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Member Count</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Branch 1</td>
+                        <td>12-09-2023</td>
+                        <td>5:00 pm</td>
+                        <td>25</td>
+                    </tr>
+                    <tr>
+
+                        <td>Branch 1</td>
+                        <td>13-09-2023</td>
+                        <td>5:00 pm</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Branch 2</td>
+                        <td>10-09-2023</td>
+                        <td>4:00 pm</td>
+                        <td>12</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="container-fluid" style="padding-right: 2.5%;">
+    <div class="row">
+        <div class="ml-auto">
+            <button class="btn btn-primary mb-5" onclick="location.href='/memberProf'" type="button">Add New Coach</button>
+        </div>
+            
+    </div>
+</div>
+
 
 {% endblock %}

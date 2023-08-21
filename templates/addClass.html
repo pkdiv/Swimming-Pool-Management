@@ -1,0 +1,26 @@
+{% extends 'layout3.html' %}
+
+{% block body %}
+
+<div class="container">
+    <div class="sign-in-form-area">
+        <form class="sign-in-form" method="post">
+            <div class="form-group">
+                <label for="compLocation">Location</label>
+                <input class="form-control" type="text" name="compLocation" id="compLocation" placeholder="Competition Location">
+            </div>
+            <div class="form-group">
+                <label for="startDate"> Date</label>
+                <input  class="form-control" type="date" name="startDate" id="startDate" placeholder="Start Date">
+            </div>
+            <div class="form-group">
+                <label for="endDate">Time</label>
+                <input class="form-control" type="time" name="endDate" id="endDate" placeholder="End Date">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Add">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

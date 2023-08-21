@@ -9,18 +9,6 @@ import psycopg2.extras
 
 app = Flask(__name__)
 
-# app.config['MYSQL_HOST'] = '192.168.0.150'
-# app.config['MYSQL_USER'] = 'testuser'
-# app.config['MYSQL_PASSWORD'] = 'testpasswd'
-# app.config['MYSQL_DB'] = 'swimming'
-# app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'flask'
-# app.config['MYSQL_PASSWORD'] = 'password'
-# app.config['MYSQL_DB'] = 'swimming'
-# app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-
 conn = psycopg2.connect(
         host="localhost",
         database="swimming",
@@ -48,10 +36,10 @@ def is_logged_in(f):
 def index():
     return render_template('index.html')
 
+
 @app.route('/home')
 def home():
     return redirect(url_for('index'))
-
 
 
 @app.route('/login', methods = ['POST', 'GET'])
@@ -72,6 +60,8 @@ def login():
                 cur.close()
                 if roleID == 1:
                     return redirect(url_for("adminDash"))
+                elif roleID ==2:
+                    return redirect(url_for("coachDash"))
                 else:
                     return redirect(url_for("memberDash"))
             else:
@@ -83,8 +73,6 @@ def login():
              return redirect(url_for("login"))
             
     return render_template('login.html')
-
-
 
 
 @app.route('/register', methods = ['GET', 'POST'])
@@ -204,6 +192,7 @@ def adminDash():
     cur.close()
     return render_template('adminDash.html', data=data)
 
+
 @app.route("/adminMemberTable", methods = ['GET', 'POST'])
 def adminMemberTable():
     if request.method == 'POST':
@@ -215,13 +204,13 @@ def adminMemberTable():
         loginData = cur.fetchone()
         data['email'] = loginData['email']
         cur.close()
-        return render_template('memberProf.html', data=data)
+        return render_template('addNewMember.html', data=data)
     else:
         cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         cur.execute("SELECT * FROM users WHERE roleid = 3")
         userData = cur.fetchall()
         cur.close()
-        return render_template('adminMemberTable2.html', userData = userData)
+        return render_template('adminMemberTable.html', userData = userData)
 
 @app.route("/adminCoachesTable")
 def adminCoachesTable():
@@ -230,6 +219,7 @@ def adminCoachesTable():
     userData = cur.fetchall()
     cur.close()
     return render_template('adminCoachesTable2.html', userData = userData)
+
 
 @app.route("/adminAthleteTable", methods = ['GET', 'POST'])
 def adminAthleteTable():
@@ -242,13 +232,14 @@ def adminAthleteTable():
         loginData = cur.fetchone()
         data['email'] = loginData['email']
         cur.close()
-        return render_template('memberProf.html', data=data)
+        return render_template('addNewMember.html', data=data)
     else:
         cur = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         cur.execute("SELECT * FROM users WHERE roleid = 4")
         userData = cur.fetchall()
         cur.close()
         return render_template('adminAthleteTable.html', userData = userData)
+
 
 @app.route('/competition')
 def competition():
@@ -257,6 +248,7 @@ def competition():
     data = cur.fetchall()
     cur.close()
     return render_template('competition.html', compData = data)
+
 
 @app.route('/equipment')
 def equipment():
@@ -294,13 +286,82 @@ def addEquipment():
     #     cur.close()
     return render_template('/addEquipment.html')
 
+
 @app.route('/about')
 def about():
     return render_template('about.html')
 
+
+# All temp routes for Display
+
 @app.route('/temp')
 def temp():
     return render_template('temp.html')
+
+
+@app.route('/branch1Dash')
+def branch1Dash():
+    return render_template('branch1Dash.html')
+
+
+@app.route('/branch2Dash')
+def branch2Dash():
+    return render_template('branch2Dash.html')
+
+
+@app.route('/branch3Dash')
+def branch3Dash():
+    return render_template('branch3Dash.html')
+
+
+@app.route('/enquiry', methods = ['GET', 'POST'])
+def enquiry():
+    if request.method == "POST":
+        return redirect('/memberProf')
+    return render_template('enquiry.html')
+
+
+@app.route('/coachStudentsTable')
+def coachStudentsTable():
+    return render_template('coachStudentsTable.html')
+
+
+@app.route('/swimmerProf')
+def swimmerProf():
+    return render_template('swimmerProf.html')
+
+
+@app.route('/payment')
+def payment():
+    return render_template('payment.html')
+
+
+@app.route('/addNewMember')
+def addNewMember():
+    return render_template('addNewMember.html')
+
+@app.route('/coachDash')
+def coachDash():
+    return render_template('coachDash.html')
+
+@app.route('/coachStudents')
+def coachStudents():
+    return render_template('coachStudents.html')
+
+
+@app.route('/coachClasses')
+def coachClasses():
+    return render_template('coachClasses.html')
+
+@app.route('/addClass')
+def addClass():
+    return render_template('addClass.html')
+
+
+@app.route('/coachBranchDash')
+def coachBranchDash():
+    return render_template('coachBranchDash.html')
+
 
 
 

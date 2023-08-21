@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="adminDash">
+                <a class="nav-link" href="coachDash">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -57,20 +57,10 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="/coachStudents" >
                     <i class="fas fa-fw fa-user"></i>
-                    <span>Users</span>
+                    <span>Students</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="heading" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="adminMemberTable">Members</a>
-                        <a class="collapse-item" href="adminCoachesTable">Coaches</a>
-                        <a class="collapse-item" href="adminAthleteTable">Swimmers</a>
-                        <a class="collapse-item" href="enquiry">Enquiry</a>
-                    </div>
-                </div>
             </li>
 
             <li class="nav-item">
@@ -82,23 +72,18 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Custom Components:</h6> -->
-                        <a class="collapse-item" href="branch1Dash">Branch 1</a>
-                        <a class="collapse-item" href="branch2Dash">Branch 2</a>
-                        <a class="collapse-item" href="branch3Dash">Branch 3</a>
+                        <a class="collapse-item" href="coachBranchDash">Branch 1</a>
+                        <a class="collapse-item" href="coachBranchDash">Branch 2</a>
+                        <a class="collapse-item" href="coachBranchDash">Branch 3</a>
                     </div>
                 </div>
             </li>
 
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="equipment">
+                <a class="nav-link" href="coachClasses">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Resources</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="competition">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Competition</span></a>
+                    <span>Classes</span></a>
             </li>
         </ul>
 
@@ -256,7 +241,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Admin </span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"> Coach </span>
                                 <img class="rounded-circle img-profile" src="{{url_for('static', filename = 'assets/img/undraw_profile.svg')}}" alt="...">
                             </a>
                             <!-- Dropdown - User Information -->
